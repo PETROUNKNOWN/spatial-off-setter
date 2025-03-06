@@ -187,12 +187,14 @@ class App(ctk.CTk):
 
             if left_delay<right_delay:
                 left_volume=1
-                print(f"delays diffs:{right_delay - left_delay}")
-                right_volume=(right_delay+left_delay) * 1
+                # print(f"delays diffs:{right_delay - left_delay}")
+                # right_volume=(right_delay+left_delay) * 1
+                right_volume=0.4
             elif left_delay>right_delay:
                 right_volume=1
-                print(f"delays diffs:{left_delay - right_delay}")
-                left_volume=(left_delay+right_delay) * 1
+                # print(f"delays diffs:{left_delay - right_delay}")
+                # left_volume=(left_delay+right_delay) * 1
+                left_volume=0.4
             else:
                 left_volume=1
                 right_volume=1
