@@ -106,8 +106,8 @@ class App(ctk.CTk):
                 self.canvas.create_line(0, y, self.canvasSize, y, fill="black", dash=self.dash_pattern)
 
         coords = [(300,300),(0,0),(300,0),(600,0),(300,0),(180,180),(420,180)]
-        for i in coords:
-            left_delay, right_delay, left_volume, right_volume = self.calculate_delay_and_volume(i[0], i[1])
+        # for i in coords:
+            # left_delay, right_delay, left_volume, right_volume = self.calculate_delay_and_volume(i[0], i[1])
                 
 
     def on_click(self, event):
@@ -182,8 +182,8 @@ class App(ctk.CTk):
             # volume for low doent work
             # time for high dont work
             
-            left_delay = (left_distance / 343) * 30
-            right_delay = (right_distance / 343) * 30
+            left_delay = (left_distance / 343) * 1
+            right_delay = (right_distance / 343) * 1
 
             if left_delay<right_delay:
                 left_volume=1
@@ -198,6 +198,10 @@ class App(ctk.CTk):
             else:
                 left_volume=1
                 right_volume=1
+
+            #volume inverse distance
+            # left_volume = 1 / (0 + left_distance)
+            # right_volume = 1 / (0 + right_distance)
 
 
 
