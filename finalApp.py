@@ -105,7 +105,7 @@ class App(ctk.CTk):
                 self.canvas.create_line(x, 0, x, self.canvasSize, fill="black", dash=self.dash_pattern)
                 self.canvas.create_line(0, y, self.canvasSize, y, fill="black", dash=self.dash_pattern)
 
-        coords = [(300,300),(0,0),(300,0),(600,0),(300,0)]
+        coords = [(300,300),(0,0),(300,0),(600,0),(300,0),(180,180),(420,180)]
         for i in coords:
             left_delay, right_delay, left_volume, right_volume = self.calculate_delay_and_volume(i[0], i[1])
                 
@@ -182,8 +182,24 @@ class App(ctk.CTk):
             # volume for low doent work
             # time for high dont work
             
-            left_delay = left_distance / 343
-            right_delay = right_distance / 343
+            left_delay = (left_distance / 343) * 30
+            right_delay = (right_distance / 343) * 30
+
+            if left_delay<right_delay:
+                left_volume=1
+                print(f"delays diffs:{right_delay - left_delay}")
+                right_volume=(right_delay+left_delay) * 1
+            elif left_delay>right_delay:
+                right_volume=1
+                print(f"delays diffs:{left_delay - right_delay}")
+                left_volume=(left_delay+right_delay) * 1
+            else:
+                left_volume=1
+                right_volume=1
+
+
+
+
             # left_delay=0.008000008 # sounds interesting
             # left_delay=0.005
             # right_delay=0
@@ -191,14 +207,16 @@ class App(ctk.CTk):
             # left_volume = 1 / (1 + left_distance)
             # right_volume = 1 / (1 + right_distance)
             # the delay needs to work with the volume, neither can be constant. Try finding the theta of said relation
-            left_volume = 1
-            right_volume = 1
+
+            # left_volume = 1
+            # right_volume = 1
+
             # print(f"returning data")
-            print(f"left_delay: {left_delay * 100}")
-            print(f"right_delay: {right_delay * 100}")
-            # print(f"left_volume: {left_volume}")
-            # print(f"right_volume: {right_volume}")
-            return left_delay * 30, right_delay * 30, left_volume, right_volume
+            print(f"left_delay: {left_delay}")
+            print(f"right_delay: {right_delay}")
+            print(f"left_volume: {left_volume}")
+            print(f"right_volume: {right_volume}")
+            return left_delay, right_delay, left_volume, right_volume
         except Exception as e:
             print(f"Error playing sound: {e}")
 

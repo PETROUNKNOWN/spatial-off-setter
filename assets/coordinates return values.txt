@@ -82,8 +82,176 @@ Coord:300,0
 left_delay: 1.457725993075801      
 right_delay: 1.457725993075801
 Coord:600,0
-left_delay: 2.06179351328798
-right_delay: 2.061278129340704
+left_delay: 0.0206179351328798-0.02061278129340704
+right_delay: 0.02061278129340704
 Coord:300,0
 left_delay: 1.457725993075801
 right_delay: 1.457725993075801
+
+0.000005153839472762933
+
+Coord:300,300
+left_delay: 0.00036443148688046647 
+right_delay: 0.00036443148688046647
+left_volume: 1
+right_volume: 1
+Coord:0,0
+left_delay: 0.6182031032951313     
+right_delay: 0.6187184872016952    
+left_volume: 1
+right_volume: 0.0005153839065639154
+Coord:300,0
+left_delay: 0.4373179361029862
+right_delay: 0.4373179361029862
+left_volume: 1
+right_volume: 1
+Coord:600,0
+left_delay: 0.6187184872016952
+right_delay: 0.6182031032951313
+left_volume: 0.0005153839065639154
+right_volume: 1
+Coord:300,0
+left_delay: 0.4373179361029862
+right_delay: 0.4373179361029862
+left_volume: 1
+right_volume: 1
+
+
+
+
+Coord:300,300
+left_delay: 0.00036443148688046647 
+right_delay: 0.00036443148688046647
+left_volume: 1
+right_volume: 1
+Coord:0,0
+left_delay: 0.6182031032951313     
+right_delay: 0.6187184872016952    
+left_volume: 1
+right_volume: 0.05153839065639154
+Coord:300,0
+left_delay: 0.4373179361029862
+right_delay: 0.4373179361029862
+left_volume: 1
+right_volume: 1
+Coord:600,0
+left_delay: 0.6187184872016952
+right_delay: 0.6182031032951313
+left_volume: 0.05153839065639154
+right_volume: 1
+Coord:300,0
+left_delay: 0.4373179361029862
+right_delay: 0.4373179361029862
+left_volume: 1
+right_volume: 1
+
+
+
+Coord:300,300
+left_delay: 0.00036443148688046647 
+right_delay: 0.00036443148688046647
+left_volume: 1
+right_volume: 1
+Coord:0,0
+left_delay: 0.6182031032951313     
+right_delay: 0.6187184872016952    
+left_volume: 1
+right_volume: 0.5153839065639154
+Coord:300,0
+left_delay: 0.4373179361029862
+right_delay: 0.4373179361029862
+left_volume: 1
+right_volume: 1
+Coord:600,0
+left_delay: 0.6187184872016952
+right_delay: 0.6182031032951313
+left_volume: 0.5153839065639154
+right_volume: 1
+Coord:300,0
+left_delay: 0.4373179361029862
+right_delay: 0.4373179361029862
+left_volume: 1
+right_volume: 1
+
+
+
+Click at 400,284
+Coord:400,284
+delays diffs:0.0007197088606526181
+left_delay: 0.1479865583833406
+right_delay: 0.14726684952268798
+left_volume: 0.2952534079060286
+right_volume: 1
+
+
+
+
+Coord:300,300
+left_delay: 0.00036443148688046647 
+right_delay: 0.00036443148688046647
+left_volume: 1
+right_volume: 1
+Coord:0,0
+delays diffs:0.0005153839065639154 
+left_delay: 0.6182031032951313     
+right_delay: 0.6187184872016952
+left_volume: 1
+right_volume: 1.2369215904968265
+Coord:300,0
+left_delay: 0.4373179361029862
+right_delay: 0.4373179361029862
+left_volume: 1
+right_volume: 1
+Coord:600,0
+delays diffs:0.0005153839065639154
+left_delay: 0.6187184872016952
+right_delay: 0.6182031032951313
+left_volume: 1.2369215904968265
+right_volume: 1
+Coord:300,0
+left_delay: 0.4373179361029862
+right_delay: 0.4373179361029862
+left_volume: 1
+right_volume: 1
+
+
+
+Coord:300,300
+left_delay: 0.00036443148688046647
+right_delay: 0.00036443148688046647
+left_volume: 1
+right_volume: 1
+Coord:0,0
+delays diffs:0.0005153839065639154
+left_delay: 0.6182031032951313
+right_delay: 0.6187184872016952
+left_volume: 1
+right_volume: 1.2369215904968265
+Coord:300,0
+left_delay: 0.4373179361029862
+right_delay: 0.4373179361029862
+left_volume: 1
+right_volume: 1
+Coord:600,0
+delays diffs:0.0005153839065639154
+left_delay: 0.6187184872016952
+right_delay: 0.6182031032951313
+left_volume: 1.2369215904968265
+right_volume: 1
+Coord:300,0
+left_delay: 0.4373179361029862
+right_delay: 0.4373179361029862
+left_volume: 1
+right_volume: 1
+Coord:180,180
+delays diffs:0.000515383671688352
+left_delay: 0.2471267390038669
+right_delay: 0.24764212267555524
+left_volume: 1
+right_volume: 0.49476886167942213
+Coord:420,180
+delays diffs:0.000515383671688352
+left_delay: 0.24764212267555524
+right_delay: 0.2471267390038669
+left_volume: 0.49476886167942213
+right_volume: 1
