@@ -185,19 +185,30 @@ class App(ctk.CTk):
             left_delay = (left_distance / 343) * 1
             right_delay = (right_distance / 343) * 1
 
-            if left_delay<right_delay:
-                left_volume=1
-                # print(f"delays diffs:{right_delay - left_delay}")
-                # right_volume=(right_delay+left_delay) * 1
-                right_volume=0.4
-            elif left_delay>right_delay:
-                right_volume=1
-                # print(f"delays diffs:{left_delay - right_delay}")
-                # left_volume=(left_delay+right_delay) * 1
-                left_volume=0.4
+            # if left_delay<right_delay:
+            #     left_volume=1
+            #     # print(f"delays diffs:{right_delay - left_delay}")
+            #     # right_volume=(right_delay+left_delay) * 1
+            #     right_volume=1 / (0.4 + left_distance)
+            # elif left_delay>right_delay:
+            #     right_volume=1
+            #     # print(f"delays diffs:{left_delay - right_delay}")
+            #     # left_volume=(left_delay+right_delay) * 1
+            #     left_volume=1 / (0.4 + right_distance)
+            # else:
+            #     left_volume=1
+            #     right_volume=1
+
+
+            if left_delay < right_delay:
+                left_volume = 1 / (left_distance * 0.5)  # slower falloff for the primary side
+                right_volume = 1 / (0.8 + left_distance)       
+            elif left_delay > right_delay:
+                right_volume = 1 / (right_distance * 0.5)
+                left_volume = 1 / (0.8 + right_distance)
             else:
-                left_volume=1
-                right_volume=1
+                left_volume = 1
+                right_volume = 1
 
             #volume inverse distance
             # left_volume = 1 / (0 + left_distance)
