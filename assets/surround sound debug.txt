@@ -1,4 +1,4 @@
-PS R:\Projects\Surround> & C:/Users/petro/AppData/Local/Programs/Python/Python313/python.exe r:/Projects/Surround/finalApp.py
+
 Click at 306,292
 Doing coordinates
 Doing squarerooting
@@ -22,7 +22,7 @@ starting audio playing
 still playing
 done audio mixing
 
-PS R:\Projects\Surround> & C:/Users/petro/AppData/Local/Programs/Python/Python313/python.exe r:/Projects/Surround/finalApp.py
+
 Click at 289,291
 Doing coordinates
 Doing squarerooting
