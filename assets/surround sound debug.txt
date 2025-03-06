@@ -1,0 +1,47 @@
+PS R:\Projects\Surround> & C:/Users/petro/AppData/Local/Programs/Python/Python313/python.exe r:/Projects/Surround/finalApp.py
+Click at 306,292
+Doing coordinates
+Doing squarerooting
+Doing delaying
+returning data
+left_delay: 0.10773001586150797 
+right_delay: 0.10730311194087414
+left_volume: 1
+right_volume: 1
+received data
+starting audio change
+starting audio change
+done sampling audio
+starting audio delay
+done audio delay
+starting audio volume
+done audio volume
+starting audio mixing
+done audio mixing
+starting audio playing
+still playing
+done audio mixing
+
+PS R:\Projects\Surround> & C:/Users/petro/AppData/Local/Programs/Python/Python313/python.exe r:/Projects/Surround/finalApp.py
+Click at 289,291
+Doing coordinates
+Doing squarerooting
+Doing delaying
+returning data
+left_delay: 0.35396222332303146
+right_delay: 0.3535261102532239
+left_volume: 1
+right_volume: 1
+received data
+starting audio change
+starting audio change
+done sampling audio
+starting audio delay
+done audio delay
+starting audio volume
+done audio volume
+starting audio mixing
+done audio mixing
+starting audio playing
+still playing
+done audio mixing
