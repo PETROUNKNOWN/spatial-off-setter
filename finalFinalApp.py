@@ -18,6 +18,8 @@ class App(ctk.CTk):
         self.distance=100 #in Meters
         self.single_spacing=self.distance/self.divisions
         self.spacing=500/self.divisions
+        self.foo=int((1/self.spacing)*100)+(0.5*int((1/self.spacing)*100))
+        print(self.foo)
 
 
         self.columnconfigure(0,weight=1)
@@ -37,7 +39,7 @@ class App(ctk.CTk):
     def populatePlatform(self):
         self.canvas=ctk.CTkCanvas(self.platform,bg="white",width=1000,height=500,highlightthickness=0)
         self.canvas.grid(row=0,column=0,sticky="nsew")
-        self.draw_markers(self.divisions+1,self.spacing,dash=False)
+        self.draw_markers(self.divisions+int(self.foo),self.spacing,dash=False)
         self.canvas.bind("<Button-1>",self.click_handler)
 
 
