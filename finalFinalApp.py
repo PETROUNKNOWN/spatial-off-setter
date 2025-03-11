@@ -10,16 +10,18 @@ class App(ctk.CTk):
         self.title("Surround Sound")
         self.resizable(0,0)
 
-        self.file_path="assets/oemTone.mp3"
-        self.sensors_delta=0.5 #in Meters
+        self.file_path="assets/Bongo_ORIG.wav"
+        self.sensors_delta=5 #in Meters
         self.sound_speed=343 #in MetersPerSeconds
+        self.data, self.samplerate = sf.read(self.file_path, dtype='float32')
         
         self.divisions=10
-        self.distance=100 #in Meters
+        self.distance=50 #in Meters
         self.single_spacing=self.distance/self.divisions
         self.spacing=500/self.divisions
         self.foo=int((1/self.spacing)*100)+(0.5*int((1/self.spacing)*100))
-        print(self.foo)
+        self.scaler=(self.distance*self.divisions)/500
+        # print(self.foo)
 
 
         self.columnconfigure(0,weight=1)
@@ -56,10 +58,50 @@ class App(ctk.CTk):
 
 
     def click_handler(self,event):
-        print(f"{event.x},{event.y}")
+        print(f"Click at:({event.x},{event.y})")
         cen=500
         x_dist=event.x-cen
         y_dist=event.y-cen
+        l_dist=((math.sqrt((x_dist+self.sensors_delta/2)**2+y_dist**2))*self.distance)/500
+        r_dist=((math.sqrt((x_dist-self.sensors_delta/2)**2+y_dist**2))*self.distance)/500
+        # l_intensity=math.log(l_dist,2)
+        # r_intensity=math.log(r_dist,2)
+        # l_intensity=l_dist * math.exp(l_dist / cen)
+        # r_intensity=r_dist * math.exp(r_dist / cen)
+        factor=200
+        l_intensity = 1/(l_dist * math.exp(l_dist / (cen * factor)))
+        r_intensity = 1/(r_dist * math.exp(r_dist / (cen * factor)))
+        print(f"l_intensity:({l_intensity})")
+        print(f"r_intensity:({r_intensity})")
+        avgDist=(l_dist+r_dist)/2
+        # print(f"Distance:({avgDist})")
+        l_chan=l_dist/self.sound_speed
+        r_chan=r_dist/self.sound_speed
+        avgTime=(l_chan+r_chan)/2
+        # print(f"Time:({avgTime})")
+        if l_intensity>0.20234080729896867:
+            l_intensity=0.20234080729896867
+        if r_intensity>0.20234080729896867:
+            r_intensity=0.20234080729896867
+
+        if l_chan<r_chan:
+            l_vol=1/(l_dist*0.5)
+            r_vol=1/(0.8+l_dist)       
+        elif l_chan>r_chan:
+            r_vol=1/(r_dist*0.5)
+            l_vol=1/(0.8+r_dist)
+        else:
+            l_vol=1
+            r_vol=1
+            # volume for low doent work
+            # time for high dont work
+        print(f"Left Volume: {l_intensity}")
+        print(f"Right Volume: {r_intensity}")
+        print(f"l_chan:({l_chan})")
+        print(f"r_chan:({r_chan})")
+        self.mixer_algo(l_chan,r_chan,l_intensity,r_intensity)
+        
+        return
         l_dist=(math.sqrt((x_dist+self.sensors_delta/2)**2+y_dist**2))/self.scaler
         r_dist=(math.sqrt((x_dist-self.sensors_delta/2)**2+y_dist**2))/self.scaler
         l_del=(l_dist/self.sound_speed)*self.meter_multiplier
@@ -91,6 +133,7 @@ class App(ctk.CTk):
         #Play audio
         sd.play(mixed_signal, self.samplerate)
         sd.wait()
+        print("Done")
 
 if __name__ == "__main__":
     app = App()
