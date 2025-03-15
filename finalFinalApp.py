@@ -2,7 +2,8 @@ import customtkinter as ctk
 import sounddevice as sd
 import numpy as np
 import math
-import soundfile as sf 
+import soundfile as sf
+from tkinter import filedialog, messagebox
 
 class App(ctk.CTk):
     def __init__(self):
@@ -14,6 +15,8 @@ class App(ctk.CTk):
         self.sensors_delta=5 #in Meters
         self.sound_speed=343 #in MetersPerSeconds
         self.data, self.samplerate = sf.read(self.file_path, dtype='float32')
+        self.input_file = ""
+        self.output_file = ""
         
         self.divisions=10
         self.distance=50 #in Meters
@@ -42,17 +45,37 @@ class App(ctk.CTk):
         self.populatePreferences()
 
     def populatePreferences(self):
-        label=ctk.CTkLabel(self.settings,text="Radius Distance(M):",anchor="s")
-        label.grid(row=0,column=0,padx=(5, 0),sticky="w")
-        distandeVar=ctk.IntVar(value=100)
-        labelValue=ctk.CTkEntry(self.settings,textvariable=distandeVar)
-        labelValue.grid(row=0,column=1,padx=(2, 5),pady=(5, 0),sticky="nsew")
-        labe2=ctk.CTkLabel(self.settings,text="Divisions:",anchor="s")
-        labe2.grid(row=1,column=0,padx=(5, 0),sticky="w")
+        ctk.CTkLabel(self.settings,text="Radius(M):",anchor="sw").grid(row=0,column=0,padx=(5, 0),sticky="w")
+        distanceVar=ctk.IntVar(value=100)
+        ctk.CTkEntry(self.settings,textvariable=distanceVar,fg_color="#202020",border_width=0).grid(row=0,column=1,padx=(2, 5),pady=(5, 0),sticky="nsew")
+        ctk.CTkLabel(self.settings,text="Divisions:",anchor="sw").grid(row=1,column=0,padx=(5, 0),sticky="w")
         divisionsVar=ctk.IntVar(value=10)
-        labe2Value=ctk.CTkEntry(self.settings,textvariable=divisionsVar)
-        labe2Value.grid(row=1,column=1,padx=(2, 5),pady=(5, 0),sticky="nsew")
+        ctk.CTkEntry(self.settings,textvariable=divisionsVar,fg_color="#202020",border_width=0).grid(row=1,column=1,padx=(2, 5),pady=(5, 0),sticky="nsew")
+
+        ctk.CTkLabel(self.settings, text="Input File:",anchor="s").grid(row=2, column=0,padx=(5, 0))
+        self.input_file_entry = ctk.CTkEntry(self.settings, width=400)
+        # self.input_file_entry.grid(row=0, column=1, padx=5, pady=5)
+        self.inputFileButton=ctk.CTkButton(self.settings, text="Browse", command=self.browse_input_file,fg_color="#202020")
+        self.inputFileButton.grid(row=2, column=1,padx=(2, 5),pady=(5, 0),sticky="nsew")
+
+        ctk.CTkLabel(self.settings, text="Output File:",anchor="s").grid(row=3, column=0,padx=(5, 0))
+        self.output_file_entry = ctk.CTkEntry(self.settings, width=400)
+        # self.output_file_entry.grid(row=1, column=1, padx=5, pady=5)
+        self.outputFileButton=ctk.CTkButton(self.settings, text="Browse", command=self.browse_output_file,fg_color="#202020")
+        self.outputFileButton.grid(row=3, column=1,padx=(2, 5),pady=(5, 0),sticky="nsew")
         pass
+
+    def browse_input_file(self):
+        self.input_file = filedialog.askopenfilename(filetypes=[("Audio Files", "*.wav *.flac *.mp3")])
+        self.input_file_entry.delete(0, "end")
+        self.input_file_entry.insert(0, self.input_file)
+        self.outputFileButton.configure(fg_color="#256025")
+
+    def browse_output_file(self):
+        self.output_file = filedialog.asksaveasfilename(defaultextension=".wav", filetypes=[("WAV File", "*.wav"), ("FLAC File", "*.flac"), ("MP3 File", "*.mp3")])
+        self.output_file_entry.delete(0, "end")
+        self.output_file_entry.insert(0, self.output_file)
+        self.outputFileButton.configure(fg_color="#256025")
 
 
     def populatePlatform(self):
