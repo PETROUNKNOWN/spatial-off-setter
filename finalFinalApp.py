@@ -34,8 +34,25 @@ class App(ctk.CTk):
 
         self.settings=ctk.CTkFrame(self,width=200,height=500,border_color="red",border_width=1)
         self.settings.grid(row=0,column=1,padx=(3, 5),pady=5,sticky="nsew")
-        self.settings.grid_propagate(False)
+        self.settings.columnconfigure(1,weight=1)
+        # self.settings.rowconfigure(0,weight=1)
+        # self.settings.grid_propagate(False)
+
         self.populatePlatform()
+        self.populatePreferences()
+
+    def populatePreferences(self):
+        label=ctk.CTkLabel(self.settings,text="Radius Distance(M):",anchor="s")
+        label.grid(row=0,column=0,padx=(5, 0),sticky="w")
+        distandeVar=ctk.IntVar(value=100)
+        labelValue=ctk.CTkEntry(self.settings,textvariable=distandeVar)
+        labelValue.grid(row=0,column=1,padx=(2, 5),pady=(5, 0),sticky="nsew")
+        labe2=ctk.CTkLabel(self.settings,text="Divisions:",anchor="s")
+        labe2.grid(row=1,column=0,padx=(5, 0),sticky="w")
+        divisionsVar=ctk.IntVar(value=10)
+        labe2Value=ctk.CTkEntry(self.settings,textvariable=divisionsVar)
+        labe2Value.grid(row=1,column=1,padx=(2, 5),pady=(5, 0),sticky="nsew")
+        pass
 
 
     def populatePlatform(self):
