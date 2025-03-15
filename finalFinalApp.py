@@ -10,7 +10,7 @@ class App(ctk.CTk):
         self.title("Surround Sound")
         self.resizable(0,0)
 
-        self.file_path="assets/Bongo_ORIG.wav"
+        self.file_path="assets/clickNew.mp3"
         self.sensors_delta=5 #in Meters
         self.sound_speed=343 #in MetersPerSeconds
         self.data, self.samplerate = sf.read(self.file_path, dtype='float32')
@@ -68,7 +68,7 @@ class App(ctk.CTk):
         # r_intensity=math.log(r_dist,2)
         # l_intensity=l_dist * math.exp(l_dist / cen)
         # r_intensity=r_dist * math.exp(r_dist / cen)
-        factor=200
+        factor=20
         l_intensity = 1/(l_dist * math.exp(l_dist / (cen * factor)))
         r_intensity = 1/(r_dist * math.exp(r_dist / (cen * factor)))
         print(f"l_intensity:({l_intensity})")
@@ -79,10 +79,10 @@ class App(ctk.CTk):
         r_chan=r_dist/self.sound_speed
         avgTime=(l_chan+r_chan)/2
         # print(f"Time:({avgTime})")
-        if l_intensity>0.20234080729896867:
-            l_intensity=0.20234080729896867
-        if r_intensity>0.20234080729896867:
-            r_intensity=0.20234080729896867
+        # if l_intensity>0.20234080729896867:
+        #     l_intensity=0.20234080729896867
+        # if r_intensity>0.20234080729896867:
+        #     r_intensity=0.20234080729896867
 
         if l_chan<r_chan:
             l_vol=1/(l_dist*0.5)
